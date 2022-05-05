@@ -1,0 +1,28 @@
+name: midi_player
+description: Flutter plugin for playing midi files
+version: 0.1.0
+homepage: https://github.com/tplkn/midi_player
+
+environment:
+  sdk: ">=2.16.1 <3.0.0"
+  flutter: ">=2.5.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  path_provider: ^2.0.9
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: me.teplyakov.midiplayer
+        pluginClass: MidiPlayerPlugin
+      ios:
+        pluginClass: MidiPlayerPlugin
