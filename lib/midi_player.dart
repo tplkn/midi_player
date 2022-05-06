@@ -13,8 +13,12 @@ class MidiPlayer {
     final byteData = await rootBundle.load(path);
 
     final file = File('${(await getTemporaryDirectory()).path}/$tmpPath');
-    await file.writeAsBytes(byteData.buffer.asUint8List(
-        byteData.offsetInBytes, byteData.lengthInBytes));
+    await file.writeAsBytes(
+      byteData.buffer.asUint8List(
+        byteData.offsetInBytes,
+        byteData.lengthInBytes,
+      ),
+    );
     return _channel.invokeMethod('load', file.path);
   }
 
