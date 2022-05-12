@@ -32,7 +32,13 @@ class _MyAppState extends State<MyApp> {
             ),
             ElevatedButton(
               onPressed: () {
-                _midiPlayer.playNote(60);
+                _midiPlayer.playNote(note: 60);
+              },
+              child: const Text('Play'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                _midiPlayer.playNote(note: 62, velocity: 0.5);
               },
               child: const Text('Play'),
             ),

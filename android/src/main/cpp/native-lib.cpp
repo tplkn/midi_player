@@ -18,8 +18,8 @@ extern "C" JNIEXPORT void JNICALL Java_me_teplyakov_midiplayer_MidiPlayerPlugin_
     fluid_synth_sfload(synthSingleton, soundfontPath, 1);
 }
 
-extern "C" JNIEXPORT void JNICALL Java_me_teplyakov_midiplayer_MidiPlayerPlugin_fluidsynthPlayNote(JNIEnv* env, jobject, jint note) {
-    fluid_synth_noteon(synthSingleton, 0, note, 127);
+extern "C" JNIEXPORT void JNICALL Java_me_teplyakov_midiplayer_MidiPlayerPlugin_fluidsynthPlayNote(JNIEnv* env, jobject, jint note, jint velocity) {
+    fluid_synth_noteon(synthSingleton, 0, note, velocity);
 }
 
 extern "C" JNIEXPORT void JNICALL Java_me_teplyakov_midiplayer_MidiPlayerPlugin_fluidsynthUnload(JNIEnv* env, jobject) {

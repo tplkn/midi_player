@@ -20,10 +20,13 @@ public class SwiftMidiPlayerPlugin: NSObject, FlutterPlugin {
         let message = "Prepared Sound Font"
         result(message)
       case "play_note":
-        let midi = call.arguments as? Int
-        au.playPitch(midi: midi ?? 60)
-        let message = "Playing: \(String(describing: midi!))"
-        result(message)
+        if let args = call.arguments as? Dictionary<String, Any>,
+          let note = args["note"] as? Int,
+          let velocity = args["velocity"] as? Int {
+            au.playPitch(midi: note, velocity: velocity)
+            let message = "Playing: \(String(describing: note))"
+            result(message)
+        }
       case "dispose":
         result("done")
       default:

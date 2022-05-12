@@ -71,7 +71,9 @@ class AudioUnitMIDISynth: NSObject {
             componentType: OSType(kAudioUnitType_Output),
             componentSubType: OSType(kAudioUnitSubType_RemoteIO),
             componentManufacturer: OSType(kAudioUnitManufacturer_Apple),
-            componentFlags: 0, componentFlagsMask: 0)
+            componentFlags: 0, 
+            componentFlagsMask: 0
+        )
         let status = AUGraphAddNode(self.processingGraph!, &cd, &ioNode)
         AudioUtils.CheckError(status)
     }
@@ -204,7 +206,7 @@ class AudioUnitMIDISynth: NSObject {
     }
 
     /// Send a note on message using patch2 on channel 0
-    func playPitch(midi: Int) {
+    func playPitch(midi: Int, velocity: Int) {
 
         let channel = UInt32(0)
         let noteCommand = UInt32(0x90 | channel)
@@ -213,7 +215,7 @@ class AudioUnitMIDISynth: NSObject {
 
         status = MusicDeviceMIDIEvent(self.midisynthUnit!, pcCommand, patch2, 0, 0)
         AudioUtils.CheckError(status)
-        status = MusicDeviceMIDIEvent(self.midisynthUnit!, noteCommand, UInt32(midi), 64, 0)
+        status = MusicDeviceMIDIEvent(self.midisynthUnit!, noteCommand, UInt32(midi), UInt32(velocity), 0)
         AudioUtils.CheckError(status)
     }
 

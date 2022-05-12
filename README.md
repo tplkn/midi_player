@@ -1,6 +1,6 @@
 # midi_player
 
-A Flutter Plugin to Play midi on iOS and Android uses SoundFont (.sf2) files.
+A Flutter plugin to play midi on iOS and Android uses SoundFont (.sf2) files.
 
 ## Important notes
 
@@ -18,13 +18,15 @@ assets:
 - Load the sound
 
 ``` ruby
-_midiPlayer.load('assets/FlorestanPiano.sf2');
+_midiPlayer.load('assets/Piano.sf2');
 ```
 
 - Play midi note
 
 ``` ruby
-_midiPlayer.playNote(60);
+_midiPlayer.playNote(note: 60);
+or
+_midiPlayer.playNote(note: 62, velocity: 0.5);
 ```
 
 - Dispose after usage
