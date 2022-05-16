@@ -213,7 +213,7 @@ class AudioUnitMIDISynth: NSObject {
 
         status = MusicDeviceMIDIEvent(self.midisynthUnit!, pcCommand, patch2, 0, 0)
         AudioUtils.CheckError(status)
-        status = MusicDeviceMIDIEvent(self.midisynthUnit!, noteCommand, UInt32(midi), 64, 0)
+        status = MusicDeviceMIDIEvent(self.midisynthUnit!, noteCommand, UInt32(midi), 127, 0)
         AudioUtils.CheckError(status)
     }
 
