@@ -40,6 +40,15 @@ class MidiPlayer {
     );
   }
 
+  Future<void> stopNote({required int note}) {
+    return _channel.invokeMethod(
+      'stop_note',
+      {
+        'note': note,
+      },
+    );
+  }
+
   /// Dispose engine
   Future<void> dispose() {
     return _channel.invokeMethod('dispose');

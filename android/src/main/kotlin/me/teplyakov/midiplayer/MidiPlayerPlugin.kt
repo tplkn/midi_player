@@ -20,6 +20,9 @@ class MidiPlayerPlugin: FlutterPlugin, MethodCallHandler {
 
       @JvmStatic
       private external fun fluidsynthPlayNote(note: Int, velocity: Int)
+
+      @JvmStatic
+      private external fun fluidsynthStopNote(note: Int)
       
       @JvmStatic
       private external fun fluidsynthUnload()
@@ -48,6 +51,12 @@ class MidiPlayerPlugin: FlutterPlugin, MethodCallHandler {
       val velocity = args?.get("velocity") as? Int
       if (note != null && velocity != null) {
         fluidsynthPlayNote(note, velocity)
+      }
+    } else if (call.method == "stop_note") {
+      val args = call.arguments() as? Map<String, Any?>
+      val note = args?.get("note") as? Int
+      if (note != null) {
+        fluidsynthStopNote(note)
       }
     } else if (call.method == "dispose") {
       fluidsynthUnload()
