@@ -22,6 +22,10 @@ extern "C" JNIEXPORT void JNICALL Java_me_teplyakov_midiplayer_MidiPlayerPlugin_
     fluid_synth_noteon(synthSingleton, 0, note, velocity);
 }
 
+extern "C" JNIEXPORT void JNICALL Java_me_teplyakov_midiplayer_MidiPlayerPlugin_fluidsynthStopNote(JNIEnv* env, jobject, jint note, jint velocity) {
+    fluid_synth_noteoff(synthSingleton, 0, note);
+}
+
 extern "C" JNIEXPORT void JNICALL Java_me_teplyakov_midiplayer_MidiPlayerPlugin_fluidsynthUnload(JNIEnv* env, jobject) {
     // Clean up
     delete_fluid_audio_driver(adriverSingleton);

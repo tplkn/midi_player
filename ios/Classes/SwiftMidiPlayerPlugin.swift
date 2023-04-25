@@ -27,6 +27,13 @@ public class SwiftMidiPlayerPlugin: NSObject, FlutterPlugin {
             let message = "Playing: \(String(describing: note))"
             result(message)
         }
+      case "stop_note":
+        if let args = call.arguments as? Dictionary<String, Any>,
+          let note = args["note"] as? Int {
+            au.stopPitch(midi: note)
+            let message = "Stopped: \(String(describing: note))"
+            result(message)
+        }
       case "dispose":
         result("done")
       default:
